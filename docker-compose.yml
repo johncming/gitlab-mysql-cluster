@@ -1,0 +1,43 @@
+version: "3.7"
+
+services:
+  mysql1:
+    image: mysql/mysql-cluster
+    container_name: mysql1
+    networks:
+      cluster:
+        ipv4_address: 192.168.0.10
+    command:
+      - mysqld
+  management1:
+    image: mysql/mysql-cluster
+    container_name: management1
+    networks:
+      cluster:
+        ipv4_address: 192.168.0.2
+    command:
+      - ndb_mgmd
+  ndb1:
+    image: mysql/mysql-cluster
+    container_name: ndb1
+    networks:
+      cluster:
+        ipv4_address: 192.168.0.3
+    command:
+      - ndbd
+  ndb2:
+    image: mysql/mysql-cluster
+    container_name: ndb2
+    networks:
+      cluster:
+        ipv4_address: 192.168.0.4
+    command:
+      - ndbd
+
+networks:
+  cluster:
+    name: mysql_cluster
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/16
