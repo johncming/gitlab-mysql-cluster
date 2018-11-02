@@ -14,7 +14,7 @@
 
 3. 登录集群中一台机器
 
-`docker-compose exec mysql1 /bin/bash`
+`docker-compose exec mysqlserver /bin/bash`
 
 4. 更改root密码
 

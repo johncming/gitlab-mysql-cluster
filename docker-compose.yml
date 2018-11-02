@@ -1,9 +1,9 @@
 version: "3.7"
 
 services:
-  mysql1:
+  mysqlserver:
     image: mysql/mysql-cluster
-    container_name: mysql1
+    container_name: mysqlserver
     networks:
       cluster:
         ipv4_address: 192.168.0.10
